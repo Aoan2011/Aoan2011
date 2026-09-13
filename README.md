@@ -8,8 +8,8 @@
 
 ```text
 ╔══════════════════════════════════════════════════════════════╗
-║  GOMOKU ENGINE v1.0     STATUS: [ WHITE_TURN ]               ║
-║  GAME ID : 1        MOVE : 1        LAST : A1                ║
+║  GOMOKU ENGINE v1.0     STATUS: [ BLACK_TURN ]               ║
+║  GAME ID : 1        MOVE : 2        LAST : B1                ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  FEATURED: One-Editor [ Textual TUI Editor ]                 ║
 ╚══════════════════════════════════════════════════════════════╝
@@ -26,7 +26,7 @@
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
 ║                  A B C D E F G H I J K L M N O               ║
-║               1  b . . . . . . . . . . . . . .               ║
+║               1  B w . . . . . . . . . . . . .               ║
 ║               2  . . . . . . . . . . . . . . .               ║
 ║               3  . . . . . . . . . . . . . . .               ║
 ║               4  . . . . . . . . . . . . . . .               ║
@@ -54,7 +54,7 @@
 
 <div align="center">
 
-### 👇 轮到 白方 ⚪ 落子 👇
+### 👇 轮到 黑方 ⚫ 落子 👇
 
 > 点击**下方棋盘**上的任意 `·`
 > → 自动创建 Issue
@@ -70,15 +70,15 @@
 ╔══════════════════════════════════════════════════════════════╗
 ║  ◤ CURRENT SITUATION ◢                                       ║
 ╠══════════════════════════════════════════════════════════════╣
-║  BLACK [B] : 1   stones     WHITE [W] : 0   stones           ║
-║  TOTAL     : 1   stones     TURN      : WHITE_TURN           ║
+║  BLACK [B] : 1   stones     WHITE [W] : 1   stones           ║
+║  TOTAL     : 2   stones     TURN      : BLACK_TURN           ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  RECENT MOVES                                                ║
-║    (no moves yet)                                            ║
+║      1.  W  B1    by Aoan2011              <- last           ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  PLAYERS                                                     ║
 ║    [B]  (waiting...)                                         ║
-║    [W]  (waiting...)                                         ║
+║    [W]  Aoan2011                                             ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -94,7 +94,7 @@
 ║    (no completed games yet)                                  ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  ACTIVE (last 24h)                                           ║
-║    (no recent activity)                                      ║
+║    Aoan2011                             1 moves              ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -128,11 +128,11 @@
 
 ## ▸ BOARD — CLICK TO PLAY
 
-> 当前回合 **白方 ⚪** ｜ 点击下方任意 `·` 落子
+> 当前回合 **黑方 ⚫** ｜ 点击下方任意 `·` 落子
 
 |   |**A**|**B**|**C**|**D**|**E**|**F**|**G**|**H**|**I**|**J**|**K**|**L**|**M**|**N**|**O**|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|**1**|●|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CB1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CC1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CD1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CE1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CF1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CG1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CH1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CI1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CJ1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CK1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CL1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CM1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CN1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CO1&body=点击Submit落子)|
+|**1**|●|○|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CC1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CD1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CE1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CF1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CG1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CH1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CI1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CJ1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CK1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CL1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CM1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CN1&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CO1&body=点击Submit落子)|
 |**2**|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CA2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CB2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CC2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CD2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CE2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CF2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CG2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CH2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CI2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CJ2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CK2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CL2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CM2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CN2&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CO2&body=点击Submit落子)|
 |**3**|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CA3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CB3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CC3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CD3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CE3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CF3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CG3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CH3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CI3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CJ3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CK3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CL3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CM3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CN3&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CO3&body=点击Submit落子)|
 |**4**|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CA4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CB4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CC4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CD4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CE4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CF4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CG4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CH4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CI4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CJ4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CK4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CL4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CM4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CN4&body=点击Submit落子)|[·](https://github.com/Aoan2011/Aoan2011/issues/new?title=gomoku%7Cplace%7CO4&body=点击Submit落子)|
