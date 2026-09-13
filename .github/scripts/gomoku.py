@@ -74,12 +74,11 @@ def generate_readme(state, repo_name):
     GREEN   = '39FF14'
     PURPLE  = 'BD00FF'
 
+    # 生成纯英文状态，防止宽度错位
     if winner:
-        status_text = f'{NAME[winner]}_WIN'.replace(' ', '_')
-        status_color = MAGENTA
+        status_en = 'BLACK_WIN' if winner == 'B' else 'WHITE_WIN'
     else:
-        status_text = f'{NAME[turn]}_TURN'.replace(' ', '_')
-        status_color = GREEN
+        status_en = 'BLACK_TURN' if turn == 'B' else 'WHITE_TURN'
 
     L = []
 
@@ -103,15 +102,21 @@ def generate_readme(state, repo_name):
         '</div>',
     ]
 
-    # ========== 终端状态栏 ==========
+    # ========== 终端状态栏（完美对齐版） ==========
+    # 内部宽度 = 62，加上左右的 ║ 刚好是 64 个字符宽度
+    line1 = f"  GOMOKU ENGINE v1.0     STATUS: [ {status_en} ]"
+    line2 = f"  GAME ID : {game_id:<6}   MOVE : {move_count:<6}   LAST : {last_move:<8}"
+    line3 = "  FEATURED: One-Editor [ Textual TUI Editor ]"
+
     L += [
-        '```',
-        '╔══════════════════════════════════════════════════════════════╗',
-        f'║  GOMOKU ENGINE v1.0     STATUS: {"● " + status_text:<26}║',
-        f'║  GAME ID : {game_id:<6}    MOVE : {move_count:<6}   LAST : {last_move:<8}║',
-        '╠══════════════════════════════════════════════════════════════╣',
-        '║  FEATURED : One-Editor  [ Textual TUI Editor ]               ║',
-        '╚══════════════════════════════════════════════════════════════╝',
+        '',  # 关键：空行，防止被当作 HTML 块不渲染代码块
+        '```text',
+        '╔' + '═' * 62 + '╗',
+        '║' + line1.ljust(62) + '║',
+        '║' + line2.ljust(62) + '║',
+        '╠' + '═' * 62 + '╣',
+        '║' + line3.ljust(62) + '║',
+        '╚' + '═' * 62 + '╝',
         '```',
         '',
     ]
