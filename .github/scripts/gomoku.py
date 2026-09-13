@@ -616,6 +616,18 @@ def main():
 
         stats['moves'].append({
             'game': state.get('game_id', 1),
+            'coord': coord,
+            'color': color,
+            'user': issue_user,
+            'time': datetime.now(timezone.utc).isoformat(),
+        })
+
+        if check_win(board, row, col, color):
+            state['winner'] = color
+            comment = f'🏆 {NAME[color]} 落子 {coord}，五子连珠获胜！'
+            if not state.get('recorded'):
+                stats['games'].append({
+                    'id': state.get('game_id', 1),
                     'winner': color,
                     'moves': state['move_count'],
                     'players': sorted({
