@@ -2,6 +2,7 @@ import os
 import re
 import json
 import sys
+from datetime import datetime, timezone, timedelta
 
 from github import Github
 
@@ -59,7 +60,109 @@ def check_win(board, row, col, color):
     return False
 
 
-def generate_readme(state, repo_name):
+def scan_threats(board, color):
+    directions = [(0, 1), (1, 0), (1, 1), (1, -1)]
+    open_three = 0
+    open_four = 0
+
+    def in_bounds(r, c):
+        return 0 <= r < BOARD_SIZE and 0 <= c < BOARD_SIZE
+
+    for r in range(BOARD_SIZE):
+        for c in range(BOARD_SIZE):
+            if board[r][c] != color:
+                continue
+            for dr, dc in directions:
+                pr, pc = r - dr, c - dc
+                if in_bounds(pr, pc) and board[pr][pc] == color:
+                    continue
+                length = 0
+                rr, cc = r, c
+                while in_bounds(rr, cc) and board[rr][cc] == color:
+                    length += 1
+                    rr += dr
+                    cc += dc
+                before_open = in_bounds(pr, pc) and board[pr][pc] == '.'
+                after_open = in_bounds(rr, cc) and board[rr][cc] == '.'
+                if length == 4 and (before_open or after_open):
+                    open_four += 1
+                elif length == 3 and before_open and after_open:
+                    open_three += 1
+    return open_three, open_four
+
+
+def predict_win_rate(board):
+    b3, b4 = scan_threats(board, 'B')
+    w3, w4 = scan_threats(board, 'W')
+    b_score = b3 * 3 + b4 * 10 + 1
+    w_score = w3 * 3 + w4 * 10 + 1
+    total = b_score + w_score
+    b_pct = round(b_score / total * 100)
+    b_pct = max(5, min(95, b_pct))
+    return b_pct, 100 - b_pct
+
+
+def get_recent_games(stats, n=3):
+    games = stats.get('games', [])
+    return list(reversed(games[-n:]))
+
+
+def get_active_players(stats, hours=24):
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
+    counter = {}
+    for m in stats.get('moves', []):
+        ts = m.get('time')
+        if not ts:
+            continue
+        try:
+            t = datetime.fromisoformat(ts.replace('Z', '+00:00'))
+            if t.tzinfo is None:
+                t = t.replace(tzinfo=timezone.utc)
+        except Exception:
+            continue
+        if t >= cutoff:
+            user = m.get('user', 'unknown')
+            counter[user] = counter.get(user, 0) + 1
+    return sorted(counter.items(), key=lambda x: -x[1])[:5]
+
+
+# ---------- ASCII 棋盘渲染（带高亮） ----------
+
+def parse_coord(coord):
+    if not coord or len(coord) < 2:
+        return -1, -1
+    try:
+        col = ord(coord[0].upper()) - ord('A')
+        row = int(coord[1:]) - 1
+        if 0 <= row < BOARD_SIZE and 0 <= col < BOARD_SIZE:
+            return row, col
+    except (ValueError, IndexError):
+        pass
+    return -1, -1
+
+
+def render_board_ascii(board, last_move=None):
+    lines = []
+    lr, lc = parse_coord(last_move)
+
+    header = '    ' + ' '.join(chr(ord('A') + i) for i in range(BOARD_SIZE))
+    lines.append(header)
+
+    for r in range(BOARD_SIZE):
+        cells = []
+        for c in range(BOARD_SIZE):
+            ch = board[r][c]
+            if r == lr and c == lc and ch in ('B', 'W'):
+                ch = ch.lower()
+            cells.append(ch)
+        lines.append(f'{r + 1:>2}  ' + ' '.join(cells))
+
+    return lines
+
+
+# ---------- README 生成 ----------
+
+def generate_readme(state, repo_name, stats):
     username = repo_name.split("/")[0]
     board = state['board']
     turn = state['turn']
@@ -68,13 +171,11 @@ def generate_readme(state, repo_name):
     move_count = state['move_count']
     last_move = state['last_move'] or '--'
 
-    # 霓虹色板
     NEON    = '00F0FF'
     MAGENTA = 'FF00AA'
     GREEN   = '39FF14'
     PURPLE  = 'BD00FF'
 
-    # 生成纯英文状态，防止宽度错位
     if winner:
         status_en = 'BLACK_WIN' if winner == 'B' else 'WHITE_WIN'
     else:
@@ -102,14 +203,13 @@ def generate_readme(state, repo_name):
         '</div>',
     ]
 
-    # ========== 终端状态栏（完美对齐版） ==========
-    # 内部宽度 = 62，加上左右的 ║ 刚好是 64 个字符宽度
+    # ========== 主状态栏 ==========
     line1 = f"  GOMOKU ENGINE v1.0     STATUS: [ {status_en} ]"
     line2 = f"  GAME ID : {game_id:<6}   MOVE : {move_count:<6}   LAST : {last_move:<8}"
     line3 = "  FEATURED: One-Editor [ Textual TUI Editor ]"
 
     L += [
-        '',  # 关键：空行，防止被当作 HTML 块不渲染代码块
+        '',
         '```text',
         '╔' + '═' * 62 + '╗',
         '║' + line1.ljust(62) + '║',
@@ -120,6 +220,164 @@ def generate_readme(state, repo_name):
         '```',
         '',
     ]
+
+    # ========== 面板 0：ASCII 棋盘 + 引导 ==========
+    W = 62
+
+    def row(text):
+        return '║' + text.ljust(W) + '║'
+
+    lr, lc = parse_coord(state.get('last_move'))
+    has_last = lr >= 0 and lc >= 0
+
+    board_view = []
+    board_view.append('╔' + '═' * W + '╗')
+    board_view.append(row('  ◤ BOARD ASCII VIEW ◢'))
+    board_view.append(row(''))
+    board_view.append(row('    [B] = Black   [W] = White   [.] = Empty'))
+    if has_last:
+        board_view.append(row('    [b] / [w] = LAST MOVE (highlighted)'))
+    else:
+        board_view.append(row('    (no moves yet)'))
+    board_view.append(row(''))
+    board_view.append('╠' + '═' * W + '╣')
+    board_view.append(row(''))
+
+    for line in render_board_ascii(board, state.get('last_move')):
+        board_view.append(row(line.center(W)))
+
+    # ---- 面板内引导（纯 ASCII，不破框） ----
+    board_view.append(row(''))
+    board_view.append('╠' + '═' * W + '╣')
+    board_view.append(row(''))
+    board_view.append(row('         >>>  SCROLL DOWN TO PLAY  <<<'.center(W)))
+    board_view.append(row(''))
+    board_view.append(row('      Click any [ . ] on the board below'.center(W)))
+    board_view.append(row('      to place your stone'.center(W)))
+    board_view.append(row(''))
+    board_view.append('╚' + '═' * W + '╝')
+
+    L += ['', '```text', *board_view, '```', '']
+
+    # ========== 面板外引导（中文 + emoji，Markdown 引用块） ==========
+    if winner:
+        winner_name = '黑方 ⚫' if winner == 'B' else '白方 ⚪'
+        L += [
+            '<div align="center">',
+            '',
+            f'### 🏆 {winner_name} 获胜！',
+            '',
+            f'👉 [**点击这里开启新一局**](https://github.com/{repo_name}/issues/new'
+            f'?title=gomoku%7Creset&body=点击Submit重置棋盘)',
+            '',
+            '</div>',
+            '',
+        ]
+    else:
+        turn_name = '黑方 ⚫' if turn == 'B' else '白方 ⚪'
+        L += [
+            '<div align="center">',
+            '',
+            f'### 👇 轮到 {turn_name} 落子 👇',
+            '',
+            '> 点击**下方棋盘**上的任意 `·`',
+            '> → 自动创建 Issue',
+            '> → 点 **Submit new issue**',
+            '> → 30 秒后棋盘自动更新',
+            '',
+            '**棋盘坐标**：列 `A~O` × 行 `1~15`，例如 `H8` 表示第 8 行第 H 列',
+            '',
+            '</div>',
+            '',
+        ]
+
+    # ========== 面板 A：当前局势 ==========
+    black_count = sum(row_.count('B') for row_ in board)
+    white_count = sum(row_.count('W') for row_ in board)
+    total_stones = black_count + white_count
+
+    game_moves = [m for m in stats.get('moves', []) if m.get('game') == game_id]
+    last_five = list(reversed(game_moves[-5:]))
+
+    players = {'B': None, 'W': None}
+    for m in game_moves:
+        c = m.get('color')
+        if c in players and players[c] is None:
+            players[c] = m.get('user')
+
+    situ = []
+    situ.append('╔' + '═' * W + '╗')
+    situ.append(row('  ◤ CURRENT SITUATION ◢'))
+    situ.append('╠' + '═' * W + '╣')
+    situ.append(row(f'  BLACK [B] : {black_count:<3} stones     WHITE [W] : {white_count:<3} stones'))
+    situ.append(row(f'  TOTAL     : {total_stones:<3} stones     TURN      : {status_en}'))
+    situ.append('╠' + '═' * W + '╣')
+    situ.append(row('  RECENT MOVES'))
+    if last_five:
+        for i, m in enumerate(last_five):
+            move_no = len(game_moves) - i
+            color_letter = m.get('color', '?')
+            coord = m.get('coord', '--')
+            user = m.get('user', 'unknown')
+            tag = '  <- last' if i == 0 else ''
+            if len(user) > 20:
+                user = user[:17] + '...'
+            situ.append(
+                row(f'    {move_no:>3}.  {color_letter}  {coord:<4}  by {user:<20}{tag}')
+            )
+    else:
+        situ.append(row('    (no moves yet)'))
+    situ.append('╠' + '═' * W + '╣')
+    situ.append(row('  PLAYERS'))
+    bp = players.get('B') or '(waiting...)'
+    wp = players.get('W') or '(waiting...)'
+    if len(bp) > 40:
+        bp = bp[:37] + '...'
+    if len(wp) > 40:
+        wp = wp[:37] + '...'
+    situ.append(row(f'    [B]  {bp}'))
+    situ.append(row(f'    [W]  {wp}'))
+    situ.append('╚' + '═' * W + '╝')
+
+    L += ['', '```text', *situ, '```', '']
+
+    # ========== 面板 B：分析与战绩 ==========
+    b3, b4 = scan_threats(board, 'B')
+    w3, w4 = scan_threats(board, 'W')
+    b_pct, w_pct = predict_win_rate(board)
+
+    recent_games = get_recent_games(stats, n=3)
+    active = get_active_players(stats, hours=24)
+
+    analysis = []
+    analysis.append('╔' + '═' * W + '╗')
+    analysis.append(row('  ◤ ANALYSIS & HISTORY ◢'))
+    analysis.append('╠' + '═' * W + '╣')
+    analysis.append(row(f'  WIN RATE  : BLACK {b_pct:>3}%   |   WHITE {w_pct:>3}%'))
+    analysis.append(row(f'  THREATS   : BLACK 3x{b3} 4x{b4}   |   WHITE 3x{w3} 4x{w4}'))
+    analysis.append('╠' + '═' * W + '╣')
+    analysis.append(row('  RECENT GAMES'))
+    if recent_games:
+        for g in recent_games:
+            gid = g.get('id', '?')
+            gw = g.get('winner', '?')
+            gm = g.get('moves', '?')
+            analysis.append(
+                row(f'    Game #{gid:<3}   {gw} wins   in   {gm:<3} moves')
+            )
+    else:
+        analysis.append(row('    (no completed games yet)'))
+    analysis.append('╠' + '═' * W + '╣')
+    analysis.append(row('  ACTIVE (last 24h)'))
+    if active:
+        for user, cnt in active:
+            u = user if len(user) <= 30 else user[:27] + '...'
+            analysis.append(row(f'    {u:<34}  {cnt:>2} moves'))
+    else:
+        analysis.append(row('    (no recent activity)'))
+    analysis.append('╚' + '═' * W + '╝')
+
+    L += ['', '```text', *analysis, '```', '']
 
     # ========== 精选项目：One-Editor ==========
     PROJECT = 'One-Editor'
@@ -169,19 +427,23 @@ def generate_readme(state, repo_name):
         '',
     ]
 
-    # ========== 棋盘标题 ==========
-    L += ['---', '', '## ▸ BOARD', '']
+    # ========== 棋盘（Markdown 表格，可点击） ==========
+    L += ['---', '', '## ▸ BOARD — CLICK TO PLAY', '']
 
     if winner:
-        L += [f'### 🏆 **{NAME[winner]} WINS**', '']
         reset_url = (
             f'https://github.com/{repo_name}/issues/new'
             f'?title=gomoku%7Creset&body=点击Submit重置棋盘'
         )
-        L += [f'👉 [🔄 RESET BOARD]({reset_url})', '']
+        L += [
+            f'### 🏆 **{NAME[winner]} WINS**',
+            '',
+            f'👉 [🔄 RESET BOARD]({reset_url})',
+            '',
+        ]
     else:
         L += [
-            f'> 当前回合 **{NAME[turn]}** ｜ 点击棋盘 `·` 落子',
+            f'> 当前回合 **{NAME[turn]}** ｜ 点击下方任意 `·` 落子',
             '',
         ]
 
@@ -293,9 +555,8 @@ def main():
     state = load_json(STATE_FILE, fresh_state())
     stats = load_json(STATS_FILE, {'games': [], 'moves': []})
 
-    # 手动触发：只重新生成 README 和图表
     if not issue_title:
-        readme = generate_readme(state, repo_name)
+        readme = generate_readme(state, repo_name, stats)
         with open(README_FILE, 'w', encoding='utf-8') as f:
             f.write(readme)
         generate_chart(STATS_FILE, STATE_FILE, CHART_FILE)
@@ -309,7 +570,6 @@ def main():
     should_commit = False
     commit_msg = ''
 
-    # ---- 重置 ----
     if issue_title.startswith('gomoku|reset'):
         old_id = state.get('game_id', 1)
         state = fresh_state(game_id=old_id + 1)
@@ -317,7 +577,6 @@ def main():
         should_commit = True
         commit_msg = f'Reset board to game #{state["game_id"]} [skip ci]'
 
-    # ---- 落子 ----
     else:
         match = re.match(r'gomoku\|place\|([A-O])(\d{1,2})$', issue_title)
         if not match:
@@ -357,17 +616,6 @@ def main():
 
         stats['moves'].append({
             'game': state.get('game_id', 1),
-            'coord': coord,
-            'color': color,
-            'user': issue_user,
-        })
-
-        if check_win(board, row, col, color):
-            state['winner'] = color
-            comment = f'🏆 {NAME[color]} 落子 {coord}，五子连珠获胜！'
-            if not state.get('recorded'):
-                stats['games'].append({
-                    'id': state.get('game_id', 1),
                     'winner': color,
                     'moves': state['move_count'],
                     'players': sorted({
@@ -383,12 +631,11 @@ def main():
         should_commit = True
         commit_msg = f'Move {coord} by {issue_user} [skip ci]'
 
-    # ---- 写回本地文件 ----
     save_json(STATE_FILE, state)
     save_json(STATS_FILE, stats)
 
     with open(README_FILE, 'w', encoding='utf-8') as f:
-        f.write(generate_readme(state, repo_name))
+        f.write(generate_readme(state, repo_name, stats))
 
     generate_chart(STATS_FILE, STATE_FILE, CHART_FILE)
 
