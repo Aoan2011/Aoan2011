@@ -1,4 +1,11 @@
 {
   "games": [],
-  "moves": []
+  "moves": [
+    {
+      "game": 1,
+      "coord": "A1",
+      "color": "B",
+      "user": "Aoan2011"
+    }
+  ]
 }
