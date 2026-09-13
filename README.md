@@ -5,12 +5,13 @@
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=800&color=00F0FF&center=true&vCenter=true&width=700&lines=SYSTEM+ONLINE%3BWELCOME+TO+Aoan2011%27S+PROFILE%3BBUILDING+One-Editor+with+Textual%3BFIVE-IN-A-ROW+ENGINE+RUNNING" />
 
 </div>
-```
+
+```text
 ╔══════════════════════════════════════════════════════════════╗
-║  GOMOKU ENGINE v1.0     STATUS: ● 白方_⚪_TURN               ║
-║  GAME ID : 1         MOVE : 1        LAST : A1      ║
+║  GOMOKU ENGINE v1.0     STATUS: [ WHITE_TURN ]               ║
+║  GAME ID : 1        MOVE : 1        LAST : A1                ║
 ╠══════════════════════════════════════════════════════════════╣
-║  FEATURED : One-Editor  [ Textual TUI Editor ]               ║
+║  FEATURED: One-Editor [ Textual TUI Editor ]                 ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
