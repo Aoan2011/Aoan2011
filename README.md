@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00F0FF,100:BD00FF&height=160&section=header&text=AOAN2011&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38" width="100%" />
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=800&color=00F0FF&center=true&vCenter=true&width=700&lines=SYSTEM+ONLINE%3BWELCOME+TO+Aoan2011%27S+PROFILE%3BBUILDING+One-Editor+with+Textual%3BFIVE-IN-A-ROW+ENGINE+RUNNING" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=800&color=00F0FF&center=true&vCenter=true&width=700&lines=SYSTEM+ONLINE%3BWELCOME+TO+Aoan2011%27S+PROFILE%3BBuilding+One-Cedric+with+Rich%3BBUILDING+One-Editor+with+Textual%3BFIVE-IN-A-ROW+ENGINE+RUNNING" />
 
 </div>
 
@@ -97,7 +97,7 @@
 ║    (no completed games yet)                                  ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  ACTIVE (last 24h)                                           ║
-║    Aoan2011                             4 moves              ║
+║    (no recent activity)                                      ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -107,21 +107,21 @@
 
 <div align="center">
 
-<a href="https://github.com/Aoan2011/One-Editor">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=Aoan2011&repo=One-Editor&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=00F0FF&icon_color=BD00FF&text_color=c9d1d9" height="150" />
+<a href="https://github.com/Aoan2011/('One-Editor', 'One-Cedric')">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Aoan2011&repo=('One-Editor', 'One-Cedric')&theme=tokyonight&hide_border=true&bg_color=0a0e14&title_color=00F0FF&icon_color=BD00FF&text_color=c9d1d9" height="150" />
 </a>
 
-<img src="https://img.shields.io/github/stars/Aoan2011/One-Editor?style=for-the-badge&color=00F0FF&labelColor=0a0e14&logo=github" />
-<img src="https://img.shields.io/github/forks/Aoan2011/One-Editor?style=for-the-badge&color=BD00FF&labelColor=0a0e14&logo=git" />
-<img src="https://img.shields.io/github/issues/Aoan2011/One-Editor?style=for-the-badge&color=FF00AA&labelColor=0a0e14&logo=githubactions" />
-<img src="https://img.shields.io/github/last-commit/Aoan2011/One-Editor?style=for-the-badge&color=39FF14&labelColor=0a0e14&logo=git" />
+<img src="https://img.shields.io/github/stars/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=00F0FF&labelColor=0a0e14&logo=github" />
+<img src="https://img.shields.io/github/forks/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=BD00FF&labelColor=0a0e14&logo=git" />
+<img src="https://img.shields.io/github/issues/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=FF00AA&labelColor=0a0e14&logo=githubactions" />
+<img src="https://img.shields.io/github/last-commit/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=39FF14&labelColor=0a0e14&logo=git" />
 
-<img src="https://img.shields.io/github/languages/top/Aoan2011/One-Editor?style=for-the-badge&color=00F0FF&labelColor=0a0e14" />
-<img src="https://img.shields.io/github/repo-size/Aoan2011/One-Editor?style=for-the-badge&color=BD00FF&labelColor=0a0e14" />
+<img src="https://img.shields.io/github/languages/top/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=00F0FF&labelColor=0a0e14" />
+<img src="https://img.shields.io/github/repo-size/Aoan2011/('One-Editor', 'One-Cedric')?style=for-the-badge&color=BD00FF&labelColor=0a0e14" />
 <img src="https://img.shields.io/badge/Textual-TUI-00F0FF?style=for-the-badge&logo=python&logoColor=white&labelColor=0a0e14" />
 <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0a0e14" />
 
-### [`One-Editor`](https://github.com/Aoan2011/One-Editor)
+### [`('One-Editor', 'One-Cedric')`](https://github.com/Aoan2011/('One-Editor', 'One-Cedric'))
 
 > `TUI Editor` · Built with **Textual** · Python · 在终端里书写代码的全新方式
 
