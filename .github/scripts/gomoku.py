@@ -197,6 +197,7 @@ def generate_readme(state, repo_name, stats):
         f'&vCenter=true&width=700'
         f'&lines=SYSTEM+ONLINE'
         f'%3BWELCOME+TO+Aoan2011%27S+PROFILE'
+        f'%3BBuilding+One-Cedric+with+Rich'
         f'%3BBUILDING+One-Editor+with+Textual'
         f'%3BFIVE-IN-A-ROW+ENGINE+RUNNING" />',
         '',
@@ -380,7 +381,7 @@ def generate_readme(state, repo_name, stats):
     L += ['', '```text', *analysis, '```', '']
 
     # ========== 精选项目：One-Editor ==========
-    PROJECT = 'One-Editor'
+    PROJECT = 'One-Editor', 'One-Cedric'
     proj = 'https://img.shields.io/github'
     pin_card = (
         f'https://github-readme-stats.vercel.app/api/pin/'
