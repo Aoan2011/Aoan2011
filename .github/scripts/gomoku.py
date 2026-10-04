@@ -381,49 +381,67 @@ def generate_readme(state, repo_name, stats):
     L += ['', '```text', *analysis, '```', '']
 
     # ========== 精选项目：One-Editor ==========
-    PROJECT = 'One-Editor', 'One-Cedric'
     proj = 'https://img.shields.io/github'
-    pin_card = (
-        f'https://github-readme-stats.vercel.app/api/pin/'
-        f'?username={username}&repo={PROJECT}'
-        f'&theme=tokyonight&hide_border=true'
-        f'&bg_color=0a0e14&title_color={NEON}'
-        f'&icon_color={PURPLE}&text_color=c9d1d9'
-    )
+
+    FEATURED = [
+        {
+            'repo': 'One-Editor',
+            'desc': '`TUI Editor` · Built with **Textual** · Python · 在终端里书写代码的全新方式',
+        },
+        {
+            'repo': 'One-Cedric',
+            'desc': '`Cedric` · Python · 智能助手 / 自动化项目',
+        },
+    ]
 
     L += [
         '---',
         '',
-        '## ▸ FEATURED PROJECT',
+        '## ▸ FEATURED PROJECTS',
         '',
         '<div align="center">',
         '',
-        f'<a href="https://github.com/{username}/{PROJECT}">',
-        f'<img src="{pin_card}" height="150" />',
-        '</a>',
-        '',
-        f'<img src="{proj}/stars/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={NEON}&labelColor=0a0e14&logo=github" />',
-        f'<img src="{proj}/forks/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={PURPLE}&labelColor=0a0e14&logo=git" />',
-        f'<img src="{proj}/issues/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={MAGENTA}&labelColor=0a0e14&logo=githubactions" />',
-        f'<img src="{proj}/last-commit/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={GREEN}&labelColor=0a0e14&logo=git" />',
-        '',
-        f'<img src="{proj}/languages/top/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={NEON}&labelColor=0a0e14" />',
-        f'<img src="{proj}/repo-size/{username}/{PROJECT}'
-        f'?style=for-the-badge&color={PURPLE}&labelColor=0a0e14" />',
-        f'<img src="https://img.shields.io/badge/Textual-TUI-{NEON}'
-        f'?style=for-the-badge&logo=python&logoColor=white&labelColor=0a0e14" />',
-        f'<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB'
-        f'?style=for-the-badge&logo=python&logoColor=white&labelColor=0a0e14" />',
-        '',
-        f'### [`{PROJECT}`](https://github.com/{username}/{PROJECT})',
-        '',
-        '> `TUI Editor` · Built with **Textual** · Python · 在终端里书写代码的全新方式',
-        '',
+    ]
+
+    for item in FEATURED:
+        repo = item['repo']
+        desc = item['desc']
+
+        pin_card = (
+            f'https://github-readme-stats.vercel.app/api/pin/'
+            f'?username={username}&repo={repo}'
+            f'&theme=tokyonight&hide_border=true'
+            f'&bg_color=0a0e14&title_color={NEON}'
+            f'&icon_color={PURPLE}&text_color=c9d1d9'
+        )
+
+        L += [
+            f'<a href="https://github.com/{username}/{repo}">',
+            f'<img src="{pin_card}" height="150" />',
+            '</a>',
+            '',
+            f'<img src="{proj}/stars/{username}/{repo}'
+            f'?style=for-the-badge&color={NEON}&labelColor=0a0e14&logo=github" />',
+            f'<img src="{proj}/forks/{username}/{repo}'
+            f'?style=for-the-badge&color={PURPLE}&labelColor=0a0e14&logo=git" />',
+            f'<img src="{proj}/issues/{username}/{repo}'
+            f'?style=for-the-badge&color={MAGENTA}&labelColor=0a0e14&logo=githubactions" />',
+            f'<img src="{proj}/last-commit/{username}/{repo}'
+            f'?style=for-the-badge&color={GREEN}&labelColor=0a0e14&logo=git" />',
+            f'<img src="{proj}/languages/top/{username}/{repo}'
+            f'?style=for-the-badge&color={NEON}&labelColor=0a0e14" />',
+            f'<img src="{proj}/repo-size/{username}/{repo}'
+            f'?style=for-the-badge&color={PURPLE}&labelColor=0a0e14" />',
+            '',
+            f'### [`{repo}`](https://github.com/{username}/{repo})',
+            '',
+            f'> {desc}',
+            '',
+            '<br />',
+            '',
+        ]
+
+    L += [
         '</div>',
         '',
     ]
