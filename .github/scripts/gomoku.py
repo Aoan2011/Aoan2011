@@ -207,7 +207,7 @@ def generate_readme(state, repo_name, stats):
     # ========== 主状态栏 ==========
     line1 = f"  GOMOKU ENGINE v1.0     STATUS: [ {status_en} ]"
     line2 = f"  GAME ID : {game_id:<6}   MOVE : {move_count:<6}   LAST : {last_move:<8}"
-    line3 = "  FEATURED: One-Editor [ Textual TUI Editor ]"
+    line3 = "  FEATURED: One-Editor [ Textual TUI Editor ], One-Cedric [ Personal AI agent for beginners ]"
 
     L += [
         '',
@@ -390,7 +390,7 @@ def generate_readme(state, repo_name, stats):
         },
         {
             'repo': 'One-Cedric',
-            'desc': '`Cedric` · Python · 智能助手 / 自动化项目',
+            'desc': '`Cedric` · Python · Built with **Rich** · An AI agent for beginners',
         },
     ]
 
