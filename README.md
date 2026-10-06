@@ -11,7 +11,7 @@
 ║  GOMOKU ENGINE v1.0     STATUS: [ WHITE_TURN ]               ║
 ║  GAME ID : 1        MOVE : 5        LAST : A3                ║
 ╠══════════════════════════════════════════════════════════════╣
-║  FEATURED: One-Editor [ Textual TUI Editor ]                 ║
+║  FEATURED: One-Editor [ Textual TUI Editor ], One-Cedric [ Personal AI agent for beginners ]║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -137,7 +137,7 @@
 
 ### [`One-Cedric`](https://github.com/Aoan2011/One-Cedric)
 
-> `Cedric` · Python · 智能助手 / 自动化项目
+> `Cedric` · Python · Built with **Rich** · An AI agent for beginners
 
 <br />
 
