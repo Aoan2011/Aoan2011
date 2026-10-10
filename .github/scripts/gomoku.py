@@ -538,17 +538,20 @@ def generate_readme(state, repo_name, stats):
     ]
 
     # ========== Star History ==========
+    # Star History 对仓库名区分大小写，统一用小写避免匹配失败
+    u = username.lower()
+
     star_link = (
-        f'{username}%2F{username}%2C'
-        f'{username}%2Fone-cedric%2C'
-        f'{username}%2F{username}.github.io%2C'
-        f'{username}%2Fone-editor'
+        f'{u}%2F{u}%2C'
+        f'{u}%2Fone-cedric%2C'
+        f'{u}%2F{u}.github.io%2C'
+        f'{u}%2Fone-editor'
     )
     star_img = (
-        f'{username}/{username}%2C'
-        f'{username}/one-cedric%2C'
-        f'{username}/{username}.github.io%2C'
-        f'{username}/one-editor'
+        f'{u}/{u}%2C'
+        f'{u}/one-cedric%2C'
+        f'{u}/{u}.github.io%2C'
+        f'{u}/one-editor'
     )
 
     L += [
