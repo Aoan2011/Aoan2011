@@ -145,7 +145,7 @@ def render_board_ascii(board, last_move=None):
     lines = []
     lr, lc = parse_coord(last_move)
 
-    header = '    ' + ' '.join(chr(ord('A') + i) for i in range(BOARD_SIZE))
+    header = '  ' + ' '.join(chr(ord('A') + i) for i in range(BOARD_SIZE))
     lines.append(header)
 
     for r in range(BOARD_SIZE):
@@ -155,7 +155,7 @@ def render_board_ascii(board, last_move=None):
             if r == lr and c == lc and ch in ('B', 'W'):
                 ch = ch.lower()
             cells.append(ch)
-        lines.append(f'{r + 1:>2}  ' + ' '.join(cells))
+        lines.append(f'  {r + 1:>1} ' + ' '.join(cells))
 
     return lines
 
@@ -207,7 +207,8 @@ def generate_readme(state, repo_name, stats):
     # ========== 主状态栏 ==========
     line1 = f"  GOMOKU ENGINE v1.0     STATUS: [ {status_en} ]"
     line2 = f"  GAME ID : {game_id:<6}   MOVE : {move_count:<6}   LAST : {last_move:<8}"
-    line3 = "  FEATURED: One-Editor [ Textual TUI Editor ], One-Cedric [ Personal AI agent for beginners ]"
+    line3a = "  FEATURED: One-Editor [ Textual TUI Editor ]"
+    line3b = "            One-Cedric [ Personal AI agent for beginners ]"
 
     L += [
         '',
@@ -216,7 +217,8 @@ def generate_readme(state, repo_name, stats):
         '║' + line1.ljust(62) + '║',
         '║' + line2.ljust(62) + '║',
         '╠' + '═' * 62 + '╣',
-        '║' + line3.ljust(62) + '║',
+        '║' + line3a.ljust(62) + '║',
+        '║' + line3b.ljust(62) + '║',
         '╚' + '═' * 62 + '╝',
         '```',
         '',
@@ -380,7 +382,7 @@ def generate_readme(state, repo_name, stats):
 
     L += ['', '```text', *analysis, '```', '']
 
-    # ========== 精选项目：One-Editor ==========
+    # ========== 精选项目：One-Editor / One-Cedric ==========
     proj = 'https://img.shields.io/github'
 
     FEATURED = [
@@ -530,6 +532,46 @@ def generate_readme(state, repo_name, stats):
         f'<img src="https://github-readme-activity-graph.vercel.app/graph'
         f'?username={username}&theme=tokyo-night&hide_border=true'
         f'&bg_color=0a0e14&color={NEON}&line={MAGENTA}&point={GREEN}" width="95%" />',
+        '',
+        '</div>',
+        '',
+    ]
+
+    # ========== Star History ==========
+    star_link = (
+        f'{username}%2F{username}%2C'
+        f'{username}%2Fone-cedric%2C'
+        f'{username}%2F{username}.github.io%2C'
+        f'{username}%2Fone-editor'
+    )
+    star_img = (
+        f'{username}/{username}%2C'
+        f'{username}/one-cedric%2C'
+        f'{username}/{username}.github.io%2C'
+        f'{username}/one-editor'
+    )
+
+    L += [
+        '---',
+        '',
+        '## ▸ STAR HISTORY',
+        '',
+        '<div align="center">',
+        '',
+        f'<a href="https://www.star-history.com/?repos={star_link}'
+        f'&type=date&legend=bottom-right">',
+        '<picture>',
+        f'<source media="(prefers-color-scheme: dark)" '
+        f'srcset="https://api.star-history.com/chart?repos={star_img}'
+        f'&type=date&theme=dark&legend=top-left" />',
+        f'<source media="(prefers-color-scheme: light)" '
+        f'srcset="https://api.star-history.com/chart?repos={star_img}'
+        f'&type=date&legend=top-left" />',
+        f'<img alt="Star History Chart" '
+        f'src="https://api.star-history.com/chart?repos={star_img}'
+        f'&type=date&legend=top-left" />',
+        '</picture>',
+        '</a>',
         '',
         '</div>',
         '',
