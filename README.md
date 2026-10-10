@@ -11,7 +11,8 @@
 ║  GOMOKU ENGINE v1.0     STATUS: [ WHITE_TURN ]               ║
 ║  GAME ID : 1        MOVE : 5        LAST : A3                ║
 ╠══════════════════════════════════════════════════════════════╣
-║  FEATURED: One-Editor [ Textual TUI Editor ], One-Cedric [ Personal AI agent for beginners ]║
+║  FEATURED: One-Editor [ Textual TUI Editor ]                 ║
+║            One-Cedric [ Personal AI agent for beginners ]    ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -25,22 +26,22 @@
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║                  A B C D E F G H I J K L M N O               ║
-║               1  B W . . . . . . . . . . . . .               ║
-║               2  B W . . . . . . . . . . . . .               ║
-║               3  b . . . . . . . . . . . . . .               ║
-║               4  . . . . . . . . . . . . . . .               ║
-║               5  . . . . . . . . . . . . . . .               ║
-║               6  . . . . . . . . . . . . . . .               ║
-║               7  . . . . . . . . . . . . . . .               ║
-║               8  . . . . . . . . . . . . . . .               ║
-║               9  . . . . . . . . . . . . . . .               ║
-║              10  . . . . . . . . . . . . . . .               ║
-║              11  . . . . . . . . . . . . . . .               ║
-║              12  . . . . . . . . . . . . . . .               ║
-║              13  . . . . . . . . . . . . . . .               ║
-║              14  . . . . . . . . . . . . . . .               ║
-║              15  . . . . . . . . . . . . . . .               ║
+║                 A B C D E F G H I J K L M N O                ║
+║                1 B W . . . . . . . . . . . . .               ║
+║                2 B W . . . . . . . . . . . . .               ║
+║                3 b . . . . . . . . . . . . . .               ║
+║                4 . . . . . . . . . . . . . . .               ║
+║                5 . . . . . . . . . . . . . . .               ║
+║                6 . . . . . . . . . . . . . . .               ║
+║                7 . . . . . . . . . . . . . . .               ║
+║                8 . . . . . . . . . . . . . . .               ║
+║                9 . . . . . . . . . . . . . . .               ║
+║                10 . . . . . . . . . . . . . . .              ║
+║                11 . . . . . . . . . . . . . . .              ║
+║                12 . . . . . . . . . . . . . . .              ║
+║                13 . . . . . . . . . . . . . . .              ║
+║                14 . . . . . . . . . . . . . . .              ║
+║                15 . . . . . . . . . . . . . . .              ║
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
@@ -191,6 +192,22 @@
 <img src="https://github-profile-trophy.vercel.app/?username=Aoan2011&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" />
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=Aoan2011&theme=tokyo-night&hide_border=true&bg_color=0a0e14&color=00F0FF&line=FF00AA&point=39FF14" width="95%" />
+
+</div>
+
+---
+
+## ▸ STAR HISTORY
+
+<div align="center">
+
+<a href="https://www.star-history.com/?repos=Aoan2011%2FAoan2011%2CAoan2011%2Fone-cedric%2CAoan2011%2FAoan2011.github.io%2CAoan2011%2Fone-editor&type=date&legend=bottom-right">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Aoan2011/Aoan2011%2CAoan2011/one-cedric%2CAoan2011/Aoan2011.github.io%2CAoan2011/one-editor&type=date&theme=dark&legend=top-left" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Aoan2011/Aoan2011%2CAoan2011/one-cedric%2CAoan2011/Aoan2011.github.io%2CAoan2011/one-editor&type=date&legend=top-left" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Aoan2011/Aoan2011%2CAoan2011/one-cedric%2CAoan2011/Aoan2011.github.io%2CAoan2011/one-editor&type=date&legend=top-left" />
+</picture>
+</a>
 
 </div>
 
