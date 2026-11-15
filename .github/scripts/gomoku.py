@@ -546,6 +546,7 @@ def generate_readme(state, repo_name, stats):
         f'{u}%2Fone-cedric%2C'
         f'{u}%2F{u}.github.io%2C'
         f'{u}%2Fone-editor'
+        f'{u}/DeepSeek-Agent'
     )
     star_img = (
         f'{u}/{u}%2C'
