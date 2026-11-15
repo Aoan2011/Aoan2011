@@ -201,11 +201,11 @@
 
 <div align="center">
 
-<a href="https://www.star-history.com/?repos=aoan2011%2Faoan2011%2Caoan2011%2Fone-cedric%2Caoan2011%2Faoan2011.github.io%2Caoan2011%2Fone-editor&type=date&legend=bottom-right">
+<a href="https://www.star-history.com/?repos=aoan2011%2Faoan2011%2Caoan2011%2Fone-cedric%2Caoan2011%2Faoan2011.github.io%2Caoan2011%2Fone-editoraoan2011/DeepSeek-Agent&type=date&legend=bottom-right">
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editor&type=date&theme=dark&legend=top-left" />
-<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editor&type=date&legend=top-left" />
-<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editor&type=date&legend=top-left" />
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editoraoan2011/DeepSeek-Agent&type=date&theme=dark&legend=top-left" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editoraoan2011/DeepSeek-Agent&type=date&legend=top-left" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=aoan2011/aoan2011%2Caoan2011/one-cedric%2Caoan2011/aoan2011.github.io%2Caoan2011/one-editoraoan2011/DeepSeek-Agent&type=date&legend=top-left" />
 </picture>
 </a>
 
