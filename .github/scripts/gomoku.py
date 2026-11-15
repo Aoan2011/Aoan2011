@@ -552,6 +552,7 @@ def generate_readme(state, repo_name, stats):
         f'{u}/one-cedric%2C'
         f'{u}/{u}.github.io%2C'
         f'{u}/one-editor'
+        f'{u}/DeepSeek-Agent'
     )
 
     L += [
